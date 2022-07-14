@@ -8,10 +8,7 @@ async function main() {
     app.listen(3004);
     console.log("Servidor en el puerto 3004");
   } catch (error) {
-    console.error(
-      "Existio un error con la conexión hacia la base de datos",
-      error
-    );
+    console.error("Existio un error con la conexión hacia la base de datos", error);
   }
 }
 
