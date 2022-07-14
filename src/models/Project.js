@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize'
-import { sequelize } from '../database/database'
+import { sequelize } from '../database/database.js'
 
 export const Projects = sequelize.define('projects',{
     id:{
@@ -15,6 +15,8 @@ export const Projects = sequelize.define('projects',{
     },
     description:{
         type: DataTypes.STRING
-    }
-})
+    },
+}, {
+    timestamps: true
+});
 
