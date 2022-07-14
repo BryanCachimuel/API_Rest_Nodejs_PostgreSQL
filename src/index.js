@@ -2,6 +2,7 @@ import app from "./app.js";
 import { sequelize } from "./database/database.js";
 
 import './models/Project.js'
+import './models/Task.js'
 
 /*
      await sequelize.sync({force:true}) -> esto permite que en base al modelo creado
