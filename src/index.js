@@ -1,8 +1,10 @@
 import app from "./app.js";
 import { sequelize } from "./database/database.js";
 
+/*
 import './models/Project.js'
 import './models/Task.js'
+*/
 
 /*
      await sequelize.sync({force:true}) -> esto permite que en base al modelo creado
@@ -15,7 +17,7 @@ async function main() {
   try {
     await sequelize.authenticate();
     console.log("Conexión hacia la base de datos exitosa");
-    await sequelize.sync({force:true})
+    await sequelize.sync({force:false})
     app.listen(3004);
     console.log("Servidor en el puerto 3004");
   } catch (error) {
