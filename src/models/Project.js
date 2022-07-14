@@ -1,7 +1,9 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../database/database.js'
 
-export const Projects = sequelize.define('projects',{
+import { Task } from './Task.js'
+
+export const Project = sequelize.define('projects',{
     id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -19,4 +21,16 @@ export const Projects = sequelize.define('projects',{
 }, {
     timestamps: true
 });
+
+/* decimos que un proyecto puede tener muchas tareas */
+Project.hasMany(Task, {
+    foreigKey: 'projectId',
+    sourceKey: 'id'
+})
+
+/* decimos que muchas tareas pueden pertener a un solo proyecto */
+Task.belongsTo(Project, {
+    foreigKey: 'projectId',
+    targetId: 'id'
+})
 
