@@ -25,7 +25,21 @@ export const createProject = async (req, res) => {
 };
 
 export const updateProject = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const {name, priority, description} = req.body
     
+        const project = await Project.findByPk(id)
+        project.name = name
+        project.prioriry = priority
+        project.description = description
+    
+        await project.save()
+        res.json(project) 
+
+    } catch (error) {
+        return res.status(500).json({message: error.message})  
+    }
 }
 
 export const deleteProject = async (req, res) => {
