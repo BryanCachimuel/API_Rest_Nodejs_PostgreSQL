@@ -55,3 +55,19 @@ export const deleteProject = async (req, res) => {
         res.status(500).json({message: error.message})
     }
 }
+
+export const getProject = async (req, res) => {
+    try {
+        const {id} = req.params
+        const project = await Project.findOne({
+            where: {
+                id,
+            },
+        });
+        if(!project) return res.status(404).json({message:'el proyecto no existe'})
+
+        res.json(project) 
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+    }
+}
