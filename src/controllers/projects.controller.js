@@ -25,19 +25,19 @@ export const createProject = async (req, res) => {
 };
 
 export const updateProject = async (req, res) => {
-
+    
 }
 
 export const deleteProject = async (req, res) => {
-   try {
-    const { id } = req.params.id
-    await Project.destroy({
-        where:{
-            id,
-        },
-    });
-    res.status(204)
-   } catch (error) {
-    res.status(500).json({message: error.message})
-   }
+    const { id } = req.params;
+    try {
+        await Project.destroy({
+            where:{
+                id,
+            },
+        });
+        res.status(204)
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
 }
