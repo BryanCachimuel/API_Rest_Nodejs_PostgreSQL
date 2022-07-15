@@ -24,7 +24,17 @@ export const createTasks = async (req, res) => {
 }
 
 export const updateTask = async (req, res) => {
-    
+    try {
+        const {id} = req.params;
+        const task = await Task.findOne({
+            where:{id}
+        });
+        task.set(req.body);
+        await task.save();
+        return res.json(task)   
+    } catch (error) {
+      return res.status(500).json({message:error.message})   
+    }
 }
 
 export const deleteTask = async (req, res) => {
