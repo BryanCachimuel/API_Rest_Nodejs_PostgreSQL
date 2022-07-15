@@ -17,7 +17,7 @@ async function main() {
   try {
     await sequelize.authenticate();
     console.log("Conexión hacia la base de datos exitosa");
-    await sequelize.sync({force:false})
+    await sequelize.sync({force:true})
     app.listen(3004);
     console.log("Servidor en el puerto 3004");
   } catch (error) {

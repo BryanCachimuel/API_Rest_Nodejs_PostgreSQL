@@ -1,11 +1,12 @@
-import Sequelize from 'sequelize'
+import Sequelize from "sequelize";
 
 export const sequelize = new Sequelize(
-    "apiproyectos",
-    "postgres",
-    "admin1994", 
-    {
-        host:'localhost',
-        dialect:'postgres'
-    }
+  "apiproyectos", // db name,
+  "postgres", // username
+  "admin1994", // password
+  {
+    host: "localhost",
+    dialect: "postgres",
+    logging: false
+  }
 );
