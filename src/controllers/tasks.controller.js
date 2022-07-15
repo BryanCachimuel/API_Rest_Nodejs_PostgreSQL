@@ -23,3 +23,32 @@ export const createTasks = async (req, res) => {
     }
 }
 
+export const updateTask = async (req, res) => {
+    
+}
+
+export const deleteTask = async (req, res) => {
+    const {id} = req.params;
+    try {
+      const result = await Task.destroy({
+        where:{id}
+      })
+      return res.status(204)
+    } catch (error) {
+      return res.status(500).json({message:error.message})  
+    }
+}
+
+export const getTask = async (req, res) => {
+    const {id} = req.params
+    try {
+      const task = await Task.findOne({
+        where: {id},
+        attributes:['name']
+      })
+      res.json(task)
+    } catch (error) {
+      return res.status(500).json({message:error.message})  
+    }
+}
+
